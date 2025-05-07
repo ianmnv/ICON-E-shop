@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  position: relative;
+}
+
+.stop-scroll-on-body {
+  overflow: hidden;
+}
+
+:root {
+  --font-size-XS: 1.2rem;
+  --font-size-S: 1.6rem;
+  --font-size-M: 2.4rem;
+  --font-size-L: 3.6rem;
+}
