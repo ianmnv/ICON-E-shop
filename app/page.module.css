@@ -17,7 +17,6 @@
   position: relative;
   display: flex;
   justify-content: center;
-  min-height: max-content;
 }
 
 .section__portrait__div {
