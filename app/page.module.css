@@ -165,3 +165,21 @@
 .feature-card-price {
   text-decoration: underline;
 }
+
+@media (max-width: 593px) {
+  .main {
+    margin: 0;
+    gap: 5rem;
+  }
+
+  .section__portrait {
+    position: static;
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .menu-mobile {
+    width: 50%;
+  }
+}

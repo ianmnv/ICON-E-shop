@@ -1,5 +1,9 @@
-import { render, screen } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import Home from "./page";
+
+vi.mock("@/components/ProductsGrid", () => ({
+  default: () => <div data-testid="mocked-products-grid">Products Grid</div>,
+}));
 
 it("test home page", () => {
   render(<Home />);

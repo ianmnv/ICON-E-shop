@@ -1,5 +1,6 @@
 import Carousel from "@/components/Carousel";
 import styles from "./page.module.css";
+import ProductsGrid from "@/components/ProductsGrid";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
 
           {/* display product cards here */}
           <div className="titulo-H"></div>
+          <ProductsGrid productsList={["mens-watches", "sunglasses"]} />
         </div>
 
         <div>

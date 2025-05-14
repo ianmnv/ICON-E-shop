@@ -1,0 +1,48 @@
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.8rem, 20rem));
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.features__card {
+  padding: 1rem;
+  border: #b9b9b9 solid 1px;
+  border-radius: 20px;
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 300ms ease;
+}
+
+.features__card:hover {
+  transform: scale(1.025);
+  box-shadow: 0 0 5px 1px #b9b9b9;
+}
+
+.imgWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.feature__card_title {
+  font-size: var(--font-size-S);
+  margin-bottom: 0.3rem;
+}
+
+.feature__card_info {
+  font-size: var(--font-size-XS);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feature__card_price {
+  text-decoration: underline;
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useLayoutEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import principalModel from "@/public/images/model-principal.jpg";
 import lolaModel from "@/public/images/model-lolita.jpg";
@@ -18,6 +18,14 @@ const carouselInfoObj = [
 
 export default function Carousel() {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [childHeight, setChildHeight] = useState(0);
+  const childRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (childRef.current) {
+      setChildHeight(childRef.current.offsetHeight);
+    }
+  }, [childRef]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -28,18 +36,24 @@ export default function Carousel() {
   }, [slideIndex]);
 
   return (
-    <div className={styles.section__portrait__wrapper}>
+    <div
+      className={styles.section__portrait__wrapper}
+      style={{ height: `${childHeight}px` }}
+    >
       {carouselInfoObj.map((item, i) => {
         return (
           <div
             key={i}
             className={`${styles.section__portrait__div}
            ${i === slideIndex ? styles.slide__active : undefined}`}
+            ref={childRef}
           >
             <Image
               src={item.imgPath}
               alt="modelo de ropa"
               className={styles.section__portrait__img}
+              width={500}
+              height={700}
             />
             <p className={styles.section__portada__p}>{item.banner}</p>
           </div>
