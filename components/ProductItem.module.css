@@ -1,11 +1,3 @@
-.features__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18.8rem, 20rem));
-  justify-content: center;
-  gap: 3rem;
-  margin-bottom: 4rem;
-}
-
 .features__card {
   padding: 1rem;
   border: #b9b9b9 solid 1px;

@@ -8,8 +8,8 @@ export const mockProducts = [
   },
   {
     id: 2,
-    title: "Brown Lether Belt watch",
-    thumnail: "https://cdn.dummyjson.com/product-images/roles/thumbnail.webp",
+    title: "Brown Leather Belt watch",
+    thumbnail: "https://cdn.dummyjson.com/product-images/roles/thumbnail.webp",
     price: 120,
     rating: 2.5,
   },

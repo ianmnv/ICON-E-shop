@@ -1,6 +1,6 @@
 import Carousel from "@/components/Carousel";
 import styles from "./page.module.css";
-import ProductsGrid from "@/components/ProductsGrid";
+import ProductItem from "@/components/ProductItem";
 
 export default function Home() {
   return (
@@ -16,9 +16,11 @@ export default function Home() {
             <span className={styles.header__category}>- Para hombre</span>
           </header>
 
-          {/* display product cards here */}
-          <div className="titulo-H"></div>
-          <ProductsGrid productsList={["mens-watches", "sunglasses"]} />
+          <div className={styles.features__grid}>
+            {["mens-watches", "sunglasses"].map((productItem, i) => (
+              <ProductItem productItem={productItem} key={i} />
+            ))}
+          </div>
         </div>
 
         <div>
@@ -27,7 +29,11 @@ export default function Home() {
             <span className={styles.header__category}>- Para mujer</span>
           </header>
 
-          <div className="titulo-M"></div>
+          <div className={styles.features__grid}>
+            {["womens-jewellery", "womens-bags"].map((productItem, i) => (
+              <ProductItem productItem={productItem} key={i} />
+            ))}
+          </div>
         </div>
       </section>
     </main>
