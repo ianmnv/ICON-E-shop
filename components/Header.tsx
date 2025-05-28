@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AlignJustify, ShoppingBag, ShoppingBasket } from "lucide-react";
 import styles from "./Header.module.css";
+import Button from "./Button";
 
 export default function Header() {
   return (
@@ -11,9 +12,9 @@ export default function Header() {
       </Link>
 
       <div className={styles.header__nav}>
-        <button className={styles.header__button}>
+        <Button ariaLabel="Open menu" classes={[`${styles.header__button}`]}>
           <AlignJustify className={styles.header__icon} />
-        </button>
+        </Button>
 
         <Link href="/cart" className={styles.header__button}>
           <ShoppingBasket className={styles.header__icon} />

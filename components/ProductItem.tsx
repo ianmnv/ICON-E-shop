@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./ProductItem.module.css";
 import Image from "next/image";
+import styles from "./ProductItem.module.css";
 import { useFetchProductsQuery } from "@/store/api/productsApi";
 import LoadingSpinner from "./LoadingSpinner";
 
