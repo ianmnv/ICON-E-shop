@@ -8,9 +8,7 @@ vi.mock("@/components/ProductItem", () => ({
 it("test home page", () => {
   render(<Home />);
 
-  expect(screen.getAllByRole("heading", { name: /destacados/i })).toHaveLength(
-    2
-  );
-  expect(screen.getByText(/para hombre/i)).toBeInTheDocument();
-  expect(screen.getByText(/para mujer/i)).toBeInTheDocument();
+  expect(screen.getAllByRole("heading", { name: /features/i })).toHaveLength(2);
+  expect(screen.getByText(/for men/i)).toBeInTheDocument();
+  expect(screen.getByText(/for women/i)).toBeInTheDocument();
 });

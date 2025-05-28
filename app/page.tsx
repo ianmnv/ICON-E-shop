@@ -11,8 +11,8 @@ export default function Home() {
 
       <section className={styles.section__features}>
         <header className={styles.header}>
-          <h2 className={styles.header__title}>Destacados</h2>
-          <span className={styles.header__category}>- Para hombre</span>
+          <h2 className={styles.header__title}>Features</h2>
+          <span className={styles.header__category}>- For men</span>
         </header>
 
         <div className={styles.features__grid}>
@@ -22,8 +22,8 @@ export default function Home() {
         </div>
 
         <header className={styles.header}>
-          <h2 className={styles.header__title}>Destacados</h2>
-          <span className={styles.header__category}>- Para mujer</span>
+          <h2 className={styles.header__title}>Features</h2>
+          <span className={styles.header__category}>- For women</span>
         </header>
 
         <div className={styles.features__grid}>

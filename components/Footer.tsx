@@ -44,29 +44,29 @@ export default function Footer() {
 
       <div className={styles.footer__columns}>
         <p className={styles.footer__p__contact}>
-          <a href="#">Acerca de nosotros</a>
+          <a href="#">About us</a>
         </p>
 
         <div
           className={`${styles.footer__p__contact} ${styles.footer__contact__info}`}
         >
-          <span>CONTACTO</span>
+          <span>CONTACT</span>
 
           <div className={styles.footer__column_inner}>
             <span>Telefono:</span>
             <a href="tel:+1234567890">+1 234 567 890</a>
             <span>Email:</span>
-            <a href="mailto:contacto@icon.com">contacto@icon.com</a>
+            <a href="mailto:contacto@icon.com">contact@icon.com</a>
           </div>
         </div>
       </div>
 
       <div className={styles.footer__columns}>
         <p className={styles.footer__p__contact}>
-          <a href="#">Terminos y condiciones</a>
+          <a href="#">Privacy & Policy</a>
         </p>
         <p className={styles.footer__p__contact}>
-          © 2025 ICON. Todos los derechos reservados.
+          © 2025 ICON. All rights reserved.
         </p>
       </div>
     </footer>
