@@ -43,8 +43,10 @@ export default function ProductItem({ productItem }: { productItem: string }) {
             </div>
             <h3 className={styles.feature__card_title}>{title}</h3>
             <div className={styles.feature__card_info}>
-              <span className={styles.feature__card_price}>{price}</span>
-              <span>{rating}</span>
+              <span
+                className={styles.feature__card_price}
+              >{`💲 ${price}`}</span>
+              <span>{`⭐️ ${rating}`}</span>
             </div>
           </Link>
         );

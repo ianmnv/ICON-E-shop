@@ -36,7 +36,7 @@ describe("<ProductItem />", () => {
     for (const mock of mockProducts) {
       const title3 = screen.getByRole("heading", { name: mock.title });
       const altImg = screen.getByRole("img", { name: mock.title });
-      const priceTxt = screen.getByText(mock.price);
+      const priceTxt = screen.getByText(new RegExp(`${mock.price}`));
 
       expect(title3).toBeInTheDocument();
       expect(altImg).toBeInTheDocument();
