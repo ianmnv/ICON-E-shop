@@ -5,9 +5,7 @@ import ProductItem from "@/components/ProductItem";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <section className={styles.section__portrait}>
-        <Carousel />
-      </section>
+      <Carousel />
 
       <section className={styles.section__features}>
         <header className={styles.header}>

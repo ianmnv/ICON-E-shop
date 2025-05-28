@@ -13,7 +13,10 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "ICON | HOME",
+  title: {
+    template: "%s | ICON",
+    default: "HOME | ICON",
+  },
   description: `Discover ICON Shop — your online destination for contemporary fashion. 
     Explore a curated selection of clothing, shoes, and accessories for men and women, 
     designed for those who value style and authenticity. Feel iconic. Be yourself.`,

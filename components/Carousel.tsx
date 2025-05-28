@@ -36,67 +36,69 @@ export default function Carousel() {
   }, [slideIndex]);
 
   return (
-    <div
-      className={styles.section__portrait__wrapper}
-      style={{ height: `${childHeight}px` }}
-    >
-      {carouselInfoObj.map((item, i) => {
-        return (
-          <div
-            key={i}
-            className={`${styles.section__portrait__div}
-           ${i === slideIndex ? styles.slide__active : undefined}`}
-            ref={childRef}
-          >
-            <Image
-              src={item.imgPath}
-              alt="modelo de ropa"
-              className={styles.section__portrait__img}
-              width={500}
-              height={700}
-            />
-            <p className={styles.section__portada__p}>{item.banner}</p>
-          </div>
-        );
-      })}
-
-      <div className={styles.section__container__btns}>
-        {carouselInfoObj.map((_, i) => {
+    <section className={styles.section__portrait}>
+      <div
+        className={styles.section__portrait__wrapper}
+        style={{ height: `${childHeight}px` }}
+      >
+        {carouselInfoObj.map((item, i) => {
           return (
-            <button
+            <div
               key={i}
-              className={`${styles.section__btn}
-          ${i === slideIndex ? styles.active__btn : undefined}
-          `}
-              onClick={() => setSlideIndex(i)}
-            ></button>
+              className={`${styles.section__portrait__div}
+           ${i === slideIndex ? styles.slide__active : undefined}`}
+              ref={childRef}
+            >
+              <Image
+                src={item.imgPath}
+                alt="modelo de ropa"
+                className={styles.section__portrait__img}
+                width={500}
+                height={700}
+              />
+              <p className={styles.section__portada__p}>{item.banner}</p>
+            </div>
           );
         })}
-      </div>
 
-      <div className={styles.section__btns__nav}>
-        <button
-          className={styles.nav__btns}
-          onClick={() =>
-            setSlideIndex((prev) =>
-              prev <= 0 ? carouselInfoObj.length - 1 : prev - 1
-            )
-          }
-        >
-          <ChevronLeft className={styles.icon__btns} />
-        </button>
-
-        <button
-          className={styles.nav__btns}
-          onClick={() => {
-            setSlideIndex((prev) =>
-              prev >= carouselInfoObj.length - 1 ? 0 : prev + 1
+        <div className={styles.section__container__btns}>
+          {carouselInfoObj.map((_, i) => {
+            return (
+              <button
+                key={i}
+                className={`${styles.section__btn}
+          ${i === slideIndex ? styles.active__btn : undefined}
+          `}
+                onClick={() => setSlideIndex(i)}
+              ></button>
             );
-          }}
-        >
-          <ChevronRight className={styles.icon__btns} />
-        </button>
+          })}
+        </div>
+
+        <div className={styles.section__btns__nav}>
+          <button
+            className={styles.nav__btns}
+            onClick={() =>
+              setSlideIndex((prev) =>
+                prev <= 0 ? carouselInfoObj.length - 1 : prev - 1
+              )
+            }
+          >
+            <ChevronLeft className={styles.icon__btns} />
+          </button>
+
+          <button
+            className={styles.nav__btns}
+            onClick={() => {
+              setSlideIndex((prev) =>
+                prev >= carouselInfoObj.length - 1 ? 0 : prev + 1
+              );
+            }}
+          >
+            <ChevronRight className={styles.icon__btns} />
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
