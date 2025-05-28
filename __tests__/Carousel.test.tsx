@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Carousel from "./Carousel";
+import Carousel from "../components/Carousel";
 import userEvent from "@testing-library/user-event";
 
 describe("<Carousel />", () => {

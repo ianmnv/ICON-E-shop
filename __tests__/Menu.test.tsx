@@ -1,6 +1,6 @@
 import { MenuContext } from "@/context/MenuContext";
-import renderWithProviders from "@/utils/test-utils";
-import Menu from "./Menu";
+import renderWithProviders from "./utils/test-utils";
+import Menu from "../components/Menu";
 import userEvent from "@testing-library/user-event";
 import { screen } from "@testing-library/dom";
 

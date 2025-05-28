@@ -3,8 +3,8 @@ import { render } from "@testing-library/react";
 import type { RenderOptions } from "@testing-library/react";
 import { Provider } from "react-redux";
 
-import type { AppStore, RootState } from "../store";
-import { setupStore } from "../store";
+import type { AppStore, RootState } from "../../store";
+import { setupStore } from "../../store";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
   preloadedState?: Partial<RootState>;

@@ -1,8 +1,8 @@
 import { screen } from "@testing-library/react";
-import renderWithProviders from "@/utils/test-utils";
+import renderWithProviders from "./utils/test-utils";
 import { useFetchProductsQuery } from "@/store/api/productsApi";
-import { mockProducts } from "@/mocks/mockData";
-import ProductItem from "./ProductItem";
+import { mockProducts } from "./__mocks__/mockData";
+import ProductItem from "../components/ProductItem";
 
 vi.mock(import("../store/api/productsApi"), async (importOriginal) => {
   const actual = await importOriginal();
