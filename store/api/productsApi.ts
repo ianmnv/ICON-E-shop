@@ -12,7 +12,16 @@ export const productsApi = createApi({
         };
       },
     }),
+    fetchSingleProduct: builder.query({
+      query: (productId: number) => {
+        return {
+          url: `products/${productId}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useFetchProductsQuery } = productsApi;
+export const { useFetchProductsQuery, useFetchSingleProductQuery } =
+  productsApi;

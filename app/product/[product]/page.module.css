@@ -1,0 +1,127 @@
+.main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 60rem));
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.imgs__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner__img__container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.inner__img__container img {
+  width: 7rem;
+  height: fit-content;
+}
+
+.main__img {
+  width: 100%;
+  height: fit-content;
+  background-color: whitesmoke;
+}
+
+.active__img {
+  border: #000 solid 1px;
+  background-color: whitesmoke;
+}
+
+.section__description__container {
+  margin: 4rem 0;
+}
+
+.descriptive__info__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 3rem 4rem;
+}
+
+.descriptive__info__container h2 {
+  font-size: var(--font-size-M);
+  font-weight: 500;
+}
+
+.info__element {
+  font-size: var(--font-size-S);
+  font-weight: bold;
+}
+
+.description__container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 3rem;
+  font-size: var(--font-size-S);
+  font-weight: 100;
+}
+
+.description__container h3 {
+  font-weight: 100;
+}
+
+.description__p {
+  margin: 0.5rem 3rem;
+}
+
+.cart__btn {
+  font-size: var(--font-size-S);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  background-color: #fff;
+  border: #b9b9b9 solid 1px;
+  border-radius: 5rem;
+}
+
+.cart__btn:hover,
+.cart__btn:active {
+  border: #fff solid 1px;
+  box-shadow: 0 0 5px 1px #b9b9b9;
+}
+
+.cart__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.shopping__cart__notification {
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  gap: 1rem;
+  top: -10%;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 1rem 3rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 4rem 0px #059a00;
+  transition: top 300ms ease-in-out;
+}
+
+.show__shopping__cart__notification {
+  top: 10%;
+}
+
+.shopping__cart__notification span {
+  font-size: clamp(var(--font-size-XS), 3vw, var(--font-size-S));
+  color: #059a00;
+}
+
+.confirmation__icon {
+  stroke: #059a00;
+  width: clamp(2rem, 3vw, 3rem);
+}

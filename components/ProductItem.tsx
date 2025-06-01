@@ -5,14 +5,7 @@ import Image from "next/image";
 import styles from "./ProductItem.module.css";
 import { useFetchProductsQuery } from "@/store/api/productsApi";
 import LoadingSpinner from "./LoadingSpinner";
-
-interface Product {
-  id: number;
-  rating: number;
-  price: number;
-  title: string;
-  thumbnail: string;
-}
+import type { Product } from "@/types";
 
 export default function ProductItem({ productItem }: { productItem: string }) {
   const { isLoading, isError, data } = useFetchProductsQuery(productItem);
