@@ -1,73 +1,90 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import renderWithProviders from "./utils/test-utils";
-import { useFetchProductsQuery } from "@/store/api/productsApi";
+import ProductContent from "@/components/ProductContent";
 import { mockProducts } from "./__mocks__/mockData";
-import ProductItem from "../components/ProductItem";
+import { useFetchSingleProductQuery } from "../store/api/productsApi";
 
-vi.mock(import("../store/api/productsApi"), async (importOriginal) => {
-  const actual = await importOriginal();
+vi.mock("../store/api/productsApi", async (importOriginal) => {
+  const actual = (await importOriginal()) as object;
   return {
     ...actual,
-    useFetchProductsQuery: vi.fn(),
+    useFetchSingleProductQuery: vi.fn(),
   };
 });
 
-const mockFetchProductsQuery = useFetchProductsQuery as unknown as ReturnType<
-  typeof vi.fn
->;
+const mockFetchSingleProductQuery =
+  useFetchSingleProductQuery as unknown as ReturnType<typeof vi.fn>;
 
-describe("<ProductItem />", () => {
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
+describe("<ProductContent />", () => {
+  it("display single product", async () => {
+    const mockProduct = mockProducts[0];
 
-  it("render product cards ", () => {
-    mockFetchProductsQuery.mockReturnValue({
-      data: { products: mockProducts },
+    mockFetchSingleProductQuery.mockReturnValue({
+      data: mockProduct,
       isLoading: false,
       isError: false,
     });
 
-    renderWithProviders(<ProductItem productItem={"mens-watches"} />);
+    renderWithProviders(<ProductContent productId={97} />);
 
-    expect(screen.queryByText(/an error occur/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
-
-    for (const mock of mockProducts) {
-      const title3 = screen.getByRole("heading", { name: mock.title });
-      const altImg = screen.getByRole("img", { name: mock.title });
-      const priceTxt = screen.getByText(new RegExp(`${mock.price}`));
-
-      expect(title3).toBeInTheDocument();
-      expect(altImg).toBeInTheDocument();
-      expect(priceTxt).toBeInTheDocument();
-    }
-  });
-
-  it("displays error message", () => {
-    mockFetchProductsQuery.mockReturnValue({
-      data: undefined,
-      isLoading: false,
-      isError: true,
-      error: { status: 500, data: "Server Error" },
+    const altText = screen.getByRole("img", { name: mockProduct.title });
+    const title = screen.getByText(mockProduct.title);
+    const warranty = screen.getByText(mockProduct.warrantyInformation);
+    const price = screen.getByText(`💲 ${mockProduct.price}`);
+    const returnPolicy = screen.getByText(mockProduct.returnPolicy);
+    const addToCartBtn = screen.getByRole("button", {
+      name: /add to the cart/i,
     });
 
-    renderWithProviders(<ProductItem productItem={"mens-watches"} />);
-
-    expect(
-      screen.getByText(/an error occurred, please try again/i)
-    ).toBeInTheDocument();
+    await waitFor(() => {
+      expect(altText).toBeInTheDocument();
+      expect(title).toBeInTheDocument();
+      expect(warranty).toBeInTheDocument();
+      expect(price).toBeInTheDocument();
+      expect(returnPolicy).toBeInTheDocument();
+      expect(addToCartBtn).toBeInTheDocument();
+    });
   });
 
-  it("displays loading message", () => {
-    mockFetchProductsQuery.mockReturnValue({
+  it("display loading spinner", () => {
+    mockFetchSingleProductQuery.mockReturnValue({
       data: undefined,
       isLoading: true,
       isError: false,
     });
 
-    renderWithProviders(<ProductItem productItem={"mens-watches"} />);
+    renderWithProviders(<ProductContent productId={97} />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
+  });
+
+  it("render all images to see product and checks img flow", async () => {
+    const user = userEvent.setup();
+    const mockProduct = mockProducts[0];
+
+    mockFetchSingleProductQuery.mockReturnValue({
+      data: mockProduct,
+      isLoading: false,
+      isError: false,
+    });
+
+    renderWithProviders(<ProductContent productId={97} />);
+
+    for (let i = 0; i < mockProducts.length; i++) {
+      const imgBtn = screen.getByRole("button", {
+        name: `${mockProduct.title}-${i}`,
+      });
+      const actualImg = screen.getByRole("img", {
+        name: `${mockProduct.title}-${i}`,
+      });
+
+      expect(actualImg).toBeInTheDocument();
+      await user.click(imgBtn);
+      expect(actualImg).toHaveClass(/active__img/i);
+      expect(imgBtn).toBeInTheDocument();
+    }
+
+    expect(mockProduct.images).toHaveLength(3);
   });
 });
