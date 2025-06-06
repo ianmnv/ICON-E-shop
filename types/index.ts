@@ -30,8 +30,8 @@ export interface Dimensions {
 }
 
 export interface Meta {
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   barcode: string;
   qrCode: string;
 }
@@ -39,7 +39,7 @@ export interface Meta {
 export interface Review {
   rating: number;
   comment: string;
-  date: Date;
+  date: string;
   reviewerName: string;
   reviewerEmail: string;
 }

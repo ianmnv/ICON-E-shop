@@ -1,9 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { productsApi } from "./api/productsApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import { cartReducer } from "./features/cartSlice";
 
 const rootReducer = combineReducers({
   [productsApi.reducerPath]: productsApi.reducer,
+  cart: cartReducer,
 });
 
 export function setupStore(preloadedState?: Partial<RootState>) {

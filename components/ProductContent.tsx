@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { ShoppingBag } from "lucide-react";
-import styles from "./ProductContent.module.css";
+import { ShoppingBag, Info } from "lucide-react";
 import { useFetchSingleProductQuery } from "@/store/api/productsApi";
+import { useAppDispatch } from "@/store/hooks/reduxHooks";
+import { addToCart } from "@/store/features/cartSlice";
+import styles from "./ProductContent.module.css";
 import LoadingSpinner from "./LoadingSpinner";
+import CartNotification from "./CartNotification";
 
 type ProductContentProps = {
   productId: number;
@@ -14,10 +17,29 @@ type ProductContentProps = {
 
 export default function ProductContent({ productId }: ProductContentProps) {
   const { data, isLoading, isError } = useFetchSingleProductQuery(productId);
+  const dispatch = useAppDispatch();
   const [activeImg, setActiveImg] = useState(0);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+
+  useEffect(() => {
+    let startTimeout: NodeJS.Timeout;
+
+    if (isAddedToCart) {
+      startTimeout = setTimeout(() => setIsAddedToCart(false), 2000);
+    }
+
+    return () => clearTimeout(startTimeout);
+  }, [isAddedToCart]);
+
+  function handleClick() {
+    setIsAddedToCart(!isAddedToCart);
+    dispatch(addToCart(data));
+  }
 
   return (
     <main className={styles.main}>
+      <CartNotification isAddedToCart={isAddedToCart} />
+
       {isError && notFound()}
 
       {isLoading && <LoadingSpinner />}
@@ -28,8 +50,8 @@ export default function ProductContent({ productId }: ProductContentProps) {
             <Image
               src={data.images[activeImg]}
               alt={data.title}
-              width={400}
-              height={400}
+              width={600}
+              height={600}
               className={styles.main__img}
               priority
             />
@@ -55,10 +77,11 @@ export default function ProductContent({ productId }: ProductContentProps) {
               ))}
             </div>
           </div>
+
           <section className={styles.section__description__container}>
             <div className={styles.descriptive__info__container}>
               <h2>{data.title}</h2>
-              <span className={styles.info__element}>{`💲 ${data.price}`}</span>
+              <span className={styles.info__element}>{`💲${data.price}`}</span>
             </div>
 
             <div className={styles.description__container}>
@@ -68,9 +91,15 @@ export default function ProductContent({ productId }: ProductContentProps) {
               <p className={styles.description__p}>
                 {data.warrantyInformation}
               </p>
+              <p
+                className={`${styles.description__p} ${styles.availableInStock}`}
+              >
+                <Info className={styles.availableIcon} />
+                {data.availabilityStatus}
+              </p>
             </div>
 
-            <button className={styles.cart__btn}>
+            <button className={styles.cart__btn} onClick={handleClick}>
               Add to the cart
               <ShoppingBag className={styles.cart__icon} />
             </button>

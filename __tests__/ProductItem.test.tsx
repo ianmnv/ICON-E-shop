@@ -17,8 +17,9 @@ const mockFetchSingleProductQuery =
   useFetchSingleProductQuery as unknown as ReturnType<typeof vi.fn>;
 
 describe("<ProductContent />", () => {
-  it("display single product", async () => {
+  it("display single product and check component flow", async () => {
     const mockProduct = mockProducts[0];
+    const user = userEvent.setup();
 
     mockFetchSingleProductQuery.mockReturnValue({
       data: mockProduct,
@@ -31,11 +32,12 @@ describe("<ProductContent />", () => {
     const altText = screen.getByRole("img", { name: mockProduct.title });
     const title = screen.getByText(mockProduct.title);
     const warranty = screen.getByText(mockProduct.warrantyInformation);
-    const price = screen.getByText(`💲 ${mockProduct.price}`);
+    const price = screen.getByText(`💲${mockProduct.price}`);
     const returnPolicy = screen.getByText(mockProduct.returnPolicy);
     const addToCartBtn = screen.getByRole("button", {
       name: /add to the cart/i,
     });
+    const cartNotification = screen.getByTestId("cart-notification");
 
     await waitFor(() => {
       expect(altText).toBeInTheDocument();
@@ -44,7 +46,12 @@ describe("<ProductContent />", () => {
       expect(price).toBeInTheDocument();
       expect(returnPolicy).toBeInTheDocument();
       expect(addToCartBtn).toBeInTheDocument();
+      expect(cartNotification).not.toHaveClass(/show__notification/i);
     });
+
+    await user.click(addToCartBtn);
+
+    expect(cartNotification).toHaveClass(/show__notification/i);
   });
 
   it("display loading spinner", () => {
