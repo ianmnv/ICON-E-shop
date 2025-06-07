@@ -3,7 +3,7 @@
 import { MenuContext } from "@/context/MenuContext";
 import { useContext } from "react";
 
-export default function Button({
+export default function Menu({
   children,
   classes,
   ariaLabel,

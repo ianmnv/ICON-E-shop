@@ -5,7 +5,7 @@ import StoreProvider from "./StoreProvider";
 import MenuProvider from "@/context/MenuContext";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Menu from "@/components/Menu";
+import Menu from "@/components/menu/Menu";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",

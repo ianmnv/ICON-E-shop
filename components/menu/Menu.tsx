@@ -1,11 +1,10 @@
 "use client";
 
-import styles from "./Menu.module.css";
 import { CircleX } from "lucide-react";
+import styles from "./Menu.module.css";
 import MenuCategory from "./MenuCategory";
-import Button from "./Button";
-import { useContext } from "react";
-import { MenuContext } from "@/context/MenuContext";
+import MenuBtn from "../buttons/MenuBtn";
+import MenuWrapper from "./MenuWrapper";
 
 interface Categories {
   title: string;
@@ -13,8 +12,6 @@ interface Categories {
 }
 
 export default function Menu() {
-  const { isMenuOpen } = useContext(MenuContext);
-
   const menCategories: Categories[] = [
     { title: "All for men", subRoute: "all" },
     { title: "T-shirts", subRoute: "mens-shirts" },
@@ -36,21 +33,20 @@ export default function Menu() {
   ];
 
   return (
-    <aside
-      className={`${styles.menu} ${
-        isMenuOpen ? styles.menu__transition : undefined
-      }`}
-    >
+    <MenuWrapper>
       <header className={styles.menu__title}>
-        <Button classes={[`${styles.close__icon__btn}`]} ariaLabel="Close menu">
+        <MenuBtn
+          classes={[`${styles.close__icon__btn}`]}
+          ariaLabel="Close menu"
+        >
           <CircleX className={styles.close__icon} />
-        </Button>
+        </MenuBtn>
 
         <h3>Categorias</h3>
       </header>
 
       <MenuCategory categoryName="Men" categories={menCategories} />
       <MenuCategory categoryName="Women" categories={womenCategories} />
-    </aside>
+    </MenuWrapper>
   );
 }

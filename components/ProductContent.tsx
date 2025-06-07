@@ -32,7 +32,7 @@ export default function ProductContent({ productId }: ProductContentProps) {
   }, [isAddedToCart]);
 
   function handleClick() {
-    setIsAddedToCart(!isAddedToCart);
+    setIsAddedToCart(true);
     dispatch(addToCart(data));
   }
 
