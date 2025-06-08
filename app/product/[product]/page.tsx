@@ -1,5 +1,5 @@
 import { Suspense, use } from "react";
-import LoadingSpinner from "@/components/LoadingSpinner";
+import LoadingProductPage from "./loading";
 import ProductContent from "@/components/ProductContent";
 
 type Props = {
@@ -37,7 +37,7 @@ export default function SingleProduct({ params }: Props) {
   const { product } = use(params);
 
   return (
-    <Suspense fallback={<LoadingSpinner />}>
+    <Suspense fallback={<LoadingProductPage />}>
       <ProductContent productId={product} />
     </Suspense>
   );

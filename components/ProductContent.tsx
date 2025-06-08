@@ -19,6 +19,7 @@ export default function ProductContent({ productId }: ProductContentProps) {
   const { data, isLoading, isError } = useFetchSingleProductQuery(productId);
   const dispatch = useAppDispatch();
   const [activeImg, setActiveImg] = useState(0);
+  const [isLoadingImg, setIsLoadingImg] = useState(false);
   const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   useEffect(() => {
@@ -30,6 +31,11 @@ export default function ProductContent({ productId }: ProductContentProps) {
 
     return () => clearTimeout(startTimeout);
   }, [isAddedToCart]);
+
+  function handleImgChange(i: number) {
+    setIsLoadingImg(true);
+    setActiveImg(i);
+  }
 
   function handleClick() {
     setIsAddedToCart(true);
@@ -47,21 +53,34 @@ export default function ProductContent({ productId }: ProductContentProps) {
       {data && (
         <>
           <div className={styles.imgs__container}>
-            <Image
-              src={data.images[activeImg]}
-              alt={data.title}
-              width={600}
-              height={600}
-              className={styles.main__img}
-              priority
-            />
+            <div
+              style={{ position: "relative", width: "100%", height: "100%" }}
+            >
+              {isLoadingImg && (
+                <div className={styles.main__img__wrapper}>
+                  <span style={{ fontSize: "var(--font-size-S)" }}>
+                    Loading...
+                  </span>
+                </div>
+              )}
+
+              <Image
+                src={data.images[activeImg]}
+                alt={data.title}
+                width={600}
+                height={600}
+                className={styles.main__img}
+                priority
+                onLoad={() => setIsLoadingImg(false)}
+              />
+            </div>
 
             <div className={styles.inner__img__container}>
               {data.images.map((img: string, i: number) => (
                 <button
                   key={i}
                   style={{ backgroundColor: "#fff", cursor: "pointer" }}
-                  onClick={() => setActiveImg(i)}
+                  onClick={() => handleImgChange(i)}
                   aria-label={`${data.title}-${i}`}
                 >
                   <Image
