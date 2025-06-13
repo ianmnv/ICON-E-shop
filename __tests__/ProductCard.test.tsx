@@ -2,7 +2,7 @@ import { screen } from "@testing-library/dom";
 import renderWithProviders from "./utils/test-utils";
 import { mockProducts } from "./__mocks__/mockData";
 import { useFetchProductsQuery } from "@/store/api/productsApi";
-import ProductItem from "@/components/ProductItem";
+import ProductCard from "@/components/ProductCard";
 
 vi.mock("../store/api/productsApi", async (importOriginal) => {
   const actual = (await importOriginal()) as object;
@@ -16,7 +16,7 @@ const mockFetchProductsQuery = useFetchProductsQuery as unknown as ReturnType<
   typeof vi.fn
 >;
 
-describe("<ProductItem />", () => {
+describe("<ProductCard />", () => {
   afterEach(() => {
     vi.clearAllMocks();
   });
@@ -28,7 +28,7 @@ describe("<ProductItem />", () => {
       isError: false,
     });
 
-    renderWithProviders(<ProductItem productQuery={"mens-watches"} />);
+    renderWithProviders(<ProductCard productQuery={"mens-watches"} />);
 
     for (let i = 0; i < mockProducts.length; i++) {
       const image = screen.getByRole("img", {
@@ -56,7 +56,7 @@ describe("<ProductItem />", () => {
       isError: true,
     });
 
-    renderWithProviders(<ProductItem productQuery={"mens-watches"} />);
+    renderWithProviders(<ProductCard productQuery={"mens-watches"} />);
 
     expect(screen.getByText(/an error occurred/i)).toBeInTheDocument();
   });
@@ -68,7 +68,7 @@ describe("<ProductItem />", () => {
       isError: false,
     });
 
-    renderWithProviders(<ProductItem productQuery={"mens-watches"} />);
+    renderWithProviders(<ProductCard productQuery={"mens-watches"} />);
 
     expect(screen.getByText(/loading.../i)).toBeInTheDocument();
   });

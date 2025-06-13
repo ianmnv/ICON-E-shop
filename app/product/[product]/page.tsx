@@ -1,6 +1,6 @@
 import { Suspense, use } from "react";
 import LoadingProductPage from "./loading";
-import ProductContent from "@/components/ProductContent";
+import ProductPageContent from "@/components/ProductPageContent";
 
 type Props = {
   params: Promise<{ product: number }>;
@@ -33,12 +33,12 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-export default function SingleProduct({ params }: Props) {
+export default function ProductPage({ params }: Props) {
   const { product } = use(params);
 
   return (
     <Suspense fallback={<LoadingProductPage />}>
-      <ProductContent productId={product} />
+      <ProductPageContent productId={product} />
     </Suspense>
   );
 }

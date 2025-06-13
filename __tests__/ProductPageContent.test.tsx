@@ -1,7 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import renderWithProviders from "./utils/test-utils";
-import ProductContent from "@/components/ProductContent";
+import ProductPageContent from "@/components/ProductPageContent";
 import { mockProducts } from "./__mocks__/mockData";
 import { useFetchSingleProductQuery } from "../store/api/productsApi";
 
@@ -16,7 +16,7 @@ vi.mock("../store/api/productsApi", async (importOriginal) => {
 const mockFetchSingleProductQuery =
   useFetchSingleProductQuery as unknown as ReturnType<typeof vi.fn>;
 
-describe("<ProductContent />", () => {
+describe("<ProductPageContent />", () => {
   afterEach(() => {
     vi.clearAllMocks();
   });
@@ -31,7 +31,7 @@ describe("<ProductContent />", () => {
       isError: false,
     });
 
-    renderWithProviders(<ProductContent productId={97} />);
+    renderWithProviders(<ProductPageContent productId={97} />);
 
     const altText = screen.getByRole("img", { name: mockProduct.title });
     const title = screen.getByText(mockProduct.title);
@@ -65,7 +65,7 @@ describe("<ProductContent />", () => {
       isError: false,
     });
 
-    renderWithProviders(<ProductContent productId={97} />);
+    renderWithProviders(<ProductPageContent productId={97} />);
 
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
   });
@@ -80,7 +80,7 @@ describe("<ProductContent />", () => {
       isError: false,
     });
 
-    renderWithProviders(<ProductContent productId={97} />);
+    renderWithProviders(<ProductPageContent productId={97} />);
 
     for (let i = 0; i < mockProducts.length; i++) {
       const imgBtn = screen.getByRole("button", {

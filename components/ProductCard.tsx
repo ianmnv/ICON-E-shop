@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./ProductItem.module.css";
+import styles from "./ProductCard.module.css";
 import { useFetchProductsQuery } from "@/store/api/productsApi";
 import LoadingSpinner from "./LoadingSpinner";
 import type { Product } from "@/types";

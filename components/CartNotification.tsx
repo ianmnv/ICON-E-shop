@@ -1,7 +1,7 @@
 "use client";
 
 import { BadgeCheck } from "lucide-react";
-import styles from "./ProductContent.module.css";
+import styles from "./ProductPageContent.module.css";
 
 export default function CartNotification({
   isAddedToCart,

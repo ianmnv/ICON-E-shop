@@ -1,6 +1,6 @@
 import Carousel from "@/components/Carousel";
 import styles from "./page.module.css";
-import ProductItem from "@/components/ProductItem";
+import ProductCard from "@/components/ProductCard";
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
 
         <div className={styles.features__grid}>
           {["mens-watches", "sunglasses"].map((productQuery, i) => (
-            <ProductItem productQuery={productQuery} key={i} />
+            <ProductCard productQuery={productQuery} key={i} />
           ))}
         </div>
 
@@ -26,7 +26,7 @@ export default function Home() {
 
         <div className={styles.features__grid}>
           {["womens-jewellery", "womens-bags"].map((productQuery, i) => (
-            <ProductItem productQuery={productQuery} key={i} />
+            <ProductCard productQuery={productQuery} key={i} />
           ))}
         </div>
       </section>

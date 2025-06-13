@@ -7,7 +7,7 @@ import { ShoppingBag, Info } from "lucide-react";
 import { useFetchSingleProductQuery } from "@/store/api/productsApi";
 import { useAppDispatch } from "@/store/hooks/reduxHooks";
 import { addToCart } from "@/store/features/cartSlice";
-import styles from "./ProductContent.module.css";
+import styles from "./ProductPageContent.module.css";
 import LoadingSpinner from "./LoadingSpinner";
 import CartNotification from "./CartNotification";
 
