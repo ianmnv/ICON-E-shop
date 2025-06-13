@@ -1,27 +1,17 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./ProductCard.module.css";
-import { useFetchProductsQuery } from "@/store/api/productsApi";
-import LoadingSpinner from "./LoadingSpinner";
 import type { Product } from "@/types";
 
-export default function ProductItem({
-  productQuery,
+export default function ProductCard({
+  productDetails,
 }: {
-  productQuery: string;
+  productDetails: Product[];
 }) {
-  const { isLoading, isError, data } = useFetchProductsQuery(productQuery);
-
   return (
     <>
-      {isError && <p>An error occurred, please try again.</p>}
-
-      {isLoading && <LoadingSpinner />}
-
-      {data?.products?.map((product: Product, i: number) => {
-        const { id, title, thumbnail, price, rating } = product;
+      {productDetails.map((product, i) => {
+        const { id, title, thumbnail, rating, price } = product;
 
         return (
           <Link
