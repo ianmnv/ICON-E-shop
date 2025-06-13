@@ -7,8 +7,12 @@ import { useFetchProductsQuery } from "@/store/api/productsApi";
 import LoadingSpinner from "./LoadingSpinner";
 import type { Product } from "@/types";
 
-export default function ProductItem({ productItem }: { productItem: string }) {
-  const { isLoading, isError, data } = useFetchProductsQuery(productItem);
+export default function ProductItem({
+  productQuery,
+}: {
+  productQuery: string;
+}) {
+  const { isLoading, isError, data } = useFetchProductsQuery(productQuery);
 
   return (
     <>

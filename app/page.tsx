@@ -14,8 +14,8 @@ export default function Home() {
         </header>
 
         <div className={styles.features__grid}>
-          {["mens-watches", "sunglasses"].map((productItem, i) => (
-            <ProductItem productItem={productItem} key={i} />
+          {["mens-watches", "sunglasses"].map((productQuery, i) => (
+            <ProductItem productQuery={productQuery} key={i} />
           ))}
         </div>
 
@@ -25,8 +25,8 @@ export default function Home() {
         </header>
 
         <div className={styles.features__grid}>
-          {["womens-jewellery", "womens-bags"].map((productItem, i) => (
-            <ProductItem productItem={productItem} key={i} />
+          {["womens-jewellery", "womens-bags"].map((productQuery, i) => (
+            <ProductItem productQuery={productQuery} key={i} />
           ))}
         </div>
       </section>
