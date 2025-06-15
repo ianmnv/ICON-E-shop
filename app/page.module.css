@@ -120,14 +120,6 @@
   font-size: var(--font-size-M);
 }
 
-.features__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18.8rem, 20rem));
-  justify-content: center;
-  gap: 3rem;
-  margin-bottom: 4rem;
-}
-
 @media (max-width: 593px) {
   .main {
     margin: 0;

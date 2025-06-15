@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ChevronsRight, MoveRight } from "lucide-react";
 import styles from "./Menu.module.css";
+import { MenuContext } from "@/context/MenuContext";
 
 interface Categories {
   title: string;
@@ -18,6 +19,12 @@ export default function MenuCategory({
   categories: Categories[];
 }) {
   const [isClosed, setIsClosed] = useState(true);
+  const { setIsMenuOpen } = useContext(MenuContext);
+
+  function handleLink() {
+    setIsMenuOpen(false);
+    setIsClosed(true);
+  }
 
   return (
     <>
@@ -35,7 +42,11 @@ export default function MenuCategory({
         }`}
       >
         {categories.map((category, i) => (
-          <Link href={category.subRoute} key={i}>
+          <Link
+            href={`/category/${category.subRoute}`}
+            onClick={handleLink}
+            key={i}
+          >
             {category.title}
             <MoveRight />
           </Link>

@@ -11,23 +11,23 @@ interface Categories {
 
 export default function Menu() {
   const menCategories: Categories[] = [
-    { title: "All for men", subRoute: "/all-for-men" },
-    { title: "T-shirts", subRoute: "/mens-shirts" },
-    { title: "Men's watches", subRoute: "/mens-watches" },
-    { title: "Men's shoes", subRoute: "/mens-shoes" },
-    { title: "Men's sunglasses", subRoute: "/sunglasses" },
+    { title: "All for men", subRoute: "all-for-men" },
+    { title: "T-shirts", subRoute: "mens-shirts" },
+    { title: "Men's watches", subRoute: "mens-watches" },
+    { title: "Men's shoes", subRoute: "mens-shoes" },
+    { title: "Men's sunglasses", subRoute: "sunglasses" },
   ];
 
   const womenCategories: Categories[] = [
     {
       title: "All for women",
-      subRoute: "/all-for-women",
+      subRoute: "all-for-women",
     },
-    { title: "Dresses", subRoute: "/womens-dresses" },
-    { title: "Women's shoes", subRoute: "/womens-shoes" },
-    { title: "Women's jewellery", subRoute: "/womens-jewellery" },
-    { title: "Women's watches", subRoute: "/womens-watches" },
-    { title: "Women's bags", subRoute: "/womens-bags" },
+    { title: "Dresses", subRoute: "womens-dresses" },
+    { title: "Women's shoes", subRoute: "womens-shoes" },
+    { title: "Women's jewellery", subRoute: "womens-jewellery" },
+    { title: "Women's watches", subRoute: "womens-watches" },
+    { title: "Women's bags", subRoute: "womens-bags" },
   ];
 
   return (

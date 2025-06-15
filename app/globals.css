@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --font-size-XS: 1.2rem;
+  --font-size-S: 1.6rem;
+  --font-size-M: 2.4rem;
+  --font-size-L: 3.6rem;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -17,9 +24,10 @@ body {
   overflow: hidden;
 }
 
-:root {
-  --font-size-XS: 1.2rem;
-  --font-size-S: 1.6rem;
-  --font-size-M: 2.4rem;
-  --font-size-L: 3.6rem;
+.card__grid__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.8rem, 20rem));
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 4rem;
 }

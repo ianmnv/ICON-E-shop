@@ -13,22 +13,28 @@ export default function Home() {
           <span className={styles.header__category}>- For men</span>
         </header>
 
-        <div className={styles.features__grid}>
-          {["mens-watches", "sunglasses"].map((productQuery, i) => (
-            <ProductCardContainer productQuery={productQuery} key={i} />
+        <section className="card__grid__container">
+          {["mens-watches", "sunglasses"].map((productQuery) => (
+            <ProductCardContainer
+              productQuery={productQuery}
+              key={productQuery}
+            />
           ))}
-        </div>
+        </section>
 
         <header className={styles.header}>
           <h2 className={styles.header__title}>Features</h2>
           <span className={styles.header__category}>- For women</span>
         </header>
 
-        <div className={styles.features__grid}>
-          {["womens-jewellery", "womens-bags"].map((productQuery, i) => (
-            <ProductCardContainer productQuery={productQuery} key={i} />
+        <section className="card__grid__container">
+          {["womens-jewellery", "womens-bags"].map((productQuery) => (
+            <ProductCardContainer
+              productQuery={productQuery}
+              key={productQuery}
+            />
           ))}
-        </div>
+        </section>
       </section>
     </main>
   );
